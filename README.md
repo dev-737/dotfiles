@@ -4,6 +4,10 @@ My Arch Linux configuration files
 
 ## Preview
 
+As of `2024-10-18` this is the newest config:
+![image](https://github.com/user-attachments/assets/3aafb11d-2936-46d0-97ec-a7c70755978f)
+
+
 As of `2023-4-27` this is how my configuration looks:
 ![1682592823](https://user-images.githubusercontent.com/73829355/234841615-ceb661d5-98e4-4728-ab73-41282c12d5c5.png)
 
