@@ -47,3 +47,6 @@ autostart/
 ardour7/
 configstore/
 Docker Desktop/
+trashrc
+.config/session
+vesktop/

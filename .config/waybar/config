@@ -1,0 +1,104 @@
+// vim: ft=jsonc
+
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  // "width": 1280, // Waybar width
+  // Choose the order of the modules
+  // "modules-center": ["custom/music"],
+  "modules-center": ["hyprland/workspaces"], 
+  "modules-left": ["custom/lock", "custom/power", "hyprland/window"],
+  "modules-right": [
+    "pulseaudio",
+    "memory",
+    "backlight",
+    "battery",
+    "clock",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "disable-scroll": true,
+    "sort-by-name": true,
+    "format": " {icon} ",
+     "persistent-workspaces": {
+     "1": [],
+     "2": [],
+     "3": [],
+     "4": [],
+     "5": [],
+    },
+    "format-icons": {
+      "active": " ",
+      "default": " "
+    }
+  },
+  "hyprland/window": {
+    "format": "  {}",
+    "max-length": 50,
+    "rewrite": {
+      "(.*) - fish": "> [$1]"
+    },
+    "separate-outputs": true
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50
+  },
+  "clock": {
+    "timezone": "Asia/Kolkata",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": " {:%d/%m/%Y}",
+    "format": " {:%H:%M}"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": "",
+    "format-plugged": "",
+    "format-alt": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", "", ""]
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+  "memory": {
+    "tooltip": "${used}GB used out of ${total}GB",
+    "on-click": "kitty -e btop",
+    "interval": "10",
+    "format": "󰍛 {percentage}%"
+  },
+  "custom/lock": {
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit",
+    "format": ""
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout &",
+    "format": "襤"
+  }
+}

@@ -1,24 +1,22 @@
-configuration{
-    modi: "run,drun,window";
-    icon-theme: "Oranchelo";
-    show-icons: true;
-    terminal: "tilix";
-    drun-display-format: "{icon} {name}";
-    location: 0;
-    disable-history: false;
-    hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: " 󰕰  Window";
-    display-Network: " 󰤨  Network";
-    sidebar-mode: true;
-    drun {
-      fallback-icon: "application-x-addon";
-    }
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+/*****----- Configuration -----*****/
+configuration {
+    modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    display-drun:               "APPS";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "WINDOW";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
 }
 
-// @theme "catppuccin-mocha"
-// @theme "~/.local/share/rofi/themes/windows11-grid-dark.rasi"
-@theme "~/.local/share/rofi/themes/style.rasi"
-
-/* vim: ft=sass
+@theme "~/.local/share/rofi/themes/theme.rasi"
