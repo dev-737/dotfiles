@@ -86,6 +86,13 @@ require("lazy").setup({
   --     vim.cmd("colorscheme nord")
   --   end,
   -- },
+
+  -- typescript language server
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  },
+
   -- syntax highlight
   {
     "nvim-treesitter/nvim-treesitter",
@@ -101,36 +108,34 @@ require("lazy").setup({
       {
         "williamboman/mason-lspconfig.nvim",
       }, -- Optional
-      { -- Optional
+      {  -- Optional
         "williamboman/mason.nvim",
         build = function()
           pcall(vim.cmd, "MasonUpdate")
         end,
       },
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },      -- Required
-      { "hrsh7th/cmp-nvim-lsp" },  -- Required
-      { "L3MON4D3/LuaSnip" },      -- Required
-      { "hrsh7th/cmp-path" },      -- Optional
+      { "hrsh7th/nvim-cmp" },         -- Required
+      { "hrsh7th/cmp-nvim-lsp" },     -- Required
+      { "L3MON4D3/LuaSnip" },         -- Required
+      { "hrsh7th/cmp-path" },         -- Optional
       { "saadparwaiz1/cmp_luasnip" }, -- Optional
-      { "hrsh7th/cmp-cmdline" },   -- Optional
-      { "hrsh7th/cmp-nvim-lua" },  -- Optional
-      { "hrsh7th/cmp-buffer" },    -- Optional
+      { "hrsh7th/cmp-cmdline" },      -- Optional
+      { "hrsh7th/cmp-nvim-lua" },     -- Optional
+      { "hrsh7th/cmp-buffer" },       -- Optional
 
       -- Snippets
       { "rafamadriz/friendly-snippets" }, -- Optional
     },
   },
   -- better inline errors
-  -- { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", event = "VeryLazy" },
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", event = "VeryLazy" },
   -- cool UI for LSP
   {
     "glepnir/lspsaga.nvim",
     event = "VeryLazy",
     branch = "main",
   },
-  -- vscode like icons for lsp-cmp
-  -- "onsails/lspkind.nvim",
   -- vscode lookin error/warning list
   {
     "folke/trouble.nvim",
@@ -222,14 +227,14 @@ require("lazy").setup({
       { "nvim-lua/plenary.nvim" },
     },
   },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+  { "nvim-telescope/telescope-fzf-native.nvim",     build = "make",    lazy = true },
   -- filetree
   {
     "nvim-tree/nvim-tree.lua",
     event = "VeryLazy",
   },
   -- ui component
-  { "MunifTanjim/nui.nvim",                     lazy = true },
+  { "MunifTanjim/nui.nvim", lazy = true },
   -- statusline
   {
     "nvim-lualine/lualine.nvim",
@@ -282,15 +287,15 @@ require("lazy").setup({
     event = "VeryLazy",
   },
   -- uh those things that help you know which scope you're inside
-  -- {
-  -- 	"lukas-reineke/indent-blankline.nvim",
-  -- 	main = "ibl",
-  -- 	opts = {},
-  -- 	config = function()
-  -- 		require("ibl").setup()
-  -- 	end,
-  -- 	event = "VeryLazy",
-  -- },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    config = function()
+      require("ibl").setup()
+    end,
+    event = "VeryLazy",
+  },
   -- the best git project commit diffbar/diffview
   -- vscode like git sidebar, suepr useful
   {
@@ -357,8 +362,8 @@ require("lazy").setup({
       },
     },
   },
-  { "Bilal2453/luvit-meta",    lazy = true }, -- optional `vim.uv` typings
-  {                                       -- optional completion source for require statements and module annotations
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  {                                        -- optional completion source for require statements and module annotations
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       opts.sources = opts.sources or {}
@@ -389,4 +394,5 @@ require("lazy").setup({
     ft = { "markdown" },
   },
   { "f-person/git-blame.nvim", event = "VeryLazy" },
+  { "andweeb/presence.nvim",   event = "VeryLazy" }
 })

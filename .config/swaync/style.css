@@ -1,0 +1,214 @@
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
+
+* {
+  font-family: "IBM Plex Sans";
+  /* background-color: transparent; */
+}
+
+.control-center {
+  background: alpha(@overlay0, 0.95);
+  margin: 5px 10px 0 0;
+  border: 2px solid @text;
+  border-radius: 15px;
+  color: @text;
+}
+
+.widget-title {
+  padding: 10px 10px 0px 10px;
+  font-size: 22px;
+  color: @text;
+}
+
+.widget-title>button {
+  font-family: JetBrains Mono Nerd;
+  border: 2px solid @text;
+  background: transparent;
+  font-size: inherit;
+  padding: 0 35px 0 30px;
+}
+
+.widget-title>button:hover {
+  background: @surface2;
+}
+
+.widget-title>button:active {
+  background: @surface1;
+}
+
+.widget-dnd {
+  padding: 0px 10px 5px 10px;
+  /* background-color: transparent; */
+  color: transparent;
+}
+
+.widget-dnd>label {
+  color: @subtext1;
+}
+
+.widget-dnd>switch {
+  background-color: @surface2;
+}
+
+.widget-dnd>switch:checked {
+  background-color: @red;
+}
+
+.widget-dnd>switch slider {
+  background-color: @surface2;
+  border: 2px solid @text;
+  border-radius: 99px;
+}
+
+.notification-row {
+  margin: 0px;
+  padding: 0px;
+  color: @text;
+}
+
+.notification {
+  background-color: @surface2;
+  box-shadow: none;
+  margin: 0px;
+  border: 2px solid @lavender;
+  color: @text;
+}
+
+.notification-content {
+  padding: 5px;
+}
+
+.notification-group {
+  /* background-color: transparent; */
+}
+
+.notification-group-icon {
+  color: @lavender;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background-color: @lavender;
+  border: 2px solid @lavender;
+}
+
+.notification-group.collapsed:hover .notification {
+  background-color: @surface1;
+}
+
+.notification-default-action:hover {
+  background-color: @surface1;
+}
+
+.notification-action:hover {
+  background-color: @surface0;
+}
+
+.notification-default-action:active,
+.notification-action:active {
+  background-color: @surface1;
+}
+
+.notification-content .text-box {
+  padding: 0px 5px;
+}
+
+.close-button {
+  background-color: @lavender;
+}
+
+.widget-volume {
+  background-color: @surface2;
+  border-radius: 20px;
+  margin: 0 10px;
+}
+
+trough highlight {
+  background-color: @text;
+}
+
+scale trough {
+  background-color: transparent;
+  border: transparent;
+  padding: 0px;
+  min-height: 5px;
+  margin: 0 0 0 10px;
+  font-family: JetBrains Mono Nerd Font;
+}
+
+slider {
+  background-color: @overlay0;
+  border: 2px solid @text;
+}
+
+.widget-volume label {
+  padding: 0 0 0 10px;
+}
+
+.widget-volume trough highlight {
+  background: @lavender;
+  border: unset;
+}
+
+.widget-volume button {
+  background-color: inherit;
+  box-shadow: unset;
+  font-size: 20px;
+  padding: 0 20px 0 0;
+  border-radius: 20px;
+  color: @lavender;
+  font-family: "JetBrains Mono NerdFont";
+}
+
+.widget-buttons-grid {
+  background-color: transparent;
+  margin: 0 0 0 278px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+  background-color: transparent;
+  border-radius: 99px;
+  border: unset;
+  box-shadow: unset;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+  background-color: @surface2;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:active {
+  background-color: @surface1;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button label {
+  color: @green;
+  font-family: "JetBrains Mono NerdFont";
+  font-size: 20px;
+}
+

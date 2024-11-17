@@ -15,8 +15,8 @@
 #workspaces {
     border-radius: 1rem;
     margin: 5px;
-    background-color: @surface0;
     margin-left: 1rem;
+    background-color: @surface0;
 }
 
 #workspaces button {
@@ -40,7 +40,6 @@
     border-radius: 1rem;
 }
 
-#custom-music,
 #tray,
 #backlight,
 #clock,
@@ -48,8 +47,7 @@
 #battery,
 #pulseaudio,
 #memory,
-#custom-lock,
-#custom-power {
+#custom-notifications {
     background-color: @surface0;
     padding: 0.5rem 1rem;
     margin: 5px 0;
@@ -92,10 +90,6 @@
     border-radius: 0;
 }
 
-#custom-music {
-    color: @mauve;
-    border-radius: 1rem;
-}
 
 #window {
     color: @mauve;
@@ -103,18 +97,34 @@
     margin-left: 1rem;
 }
 
+#tray {
+    border-radius: 1rem;
+}
+
+
+#custom-notifications {
+    color: @sapphire;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    padding-right: 0.9rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+/*
 #custom-lock {
     margin-left: 1rem;
     border-radius: 1rem 0px 0px 1rem;
     color: @lavender;
 }
 
+#custom-music {
+    color: @mauve;
+    border-radius: 1rem;
+}
+
 #custom-power {
     border-radius: 0px 1rem 1rem 0px;
     color: @red;
 }
-
-#tray {
-    margin-right: 1rem;
-    border-radius: 1rem;
-}
+*/
