@@ -47,7 +47,7 @@ require("lazy").setup({
   -- {
   --   "navarasu/onedark.nvim",
   --   name = "onedark",
-  --   enabled = false,
+  --   enabled = true,
   --   config = function()
   --     local onedark = require("onedark")
   --     onedark.setup({ style = "warmer" })
@@ -96,6 +96,7 @@ require("lazy").setup({
   -- syntax highlight
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     event = "VeryLazy",
   },
   {
@@ -128,8 +129,6 @@ require("lazy").setup({
       { "rafamadriz/friendly-snippets" }, -- Optional
     },
   },
-  -- better inline errors
-  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", event = "VeryLazy" },
   -- cool UI for LSP
   {
     "glepnir/lspsaga.nvim",

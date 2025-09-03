@@ -1,4 +1,4 @@
-local status, null_ls = pcall(require, "null-ls")
+local status, null_ls = pcall(require, "none-ls")
 if not status then
   return
 end
@@ -40,8 +40,8 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.completion.spell,
-    require("none-ls.formatting.eslint"),
-    -- null_ls.builtins.formatting.prettier,
+    -- null_ls.formatting.eslint,
+    null_ls.builtins.formatting.prettier,
     -- null_ls.builtins.code_actions.eslint,
     -- null_ls.builtins.diagnostics.eslint,
   },
