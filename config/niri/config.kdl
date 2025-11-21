@@ -1,0 +1,90 @@
+// 1. This MUST be at the very top to remove titlebars
+prefer-no-csd
+
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "nm-applet"
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+    focus-follows-mouse
+}
+
+layout {
+    gaps 16
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.6
+        proportion 0.7
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        active-color "#8aadf4"
+        inactive-color "#5b6078"
+    }
+
+    // Reserve space at the bottom for your Noctalia shell
+    struts {
+        left 16
+        right 16
+        top 8
+        bottom 64 
+    }
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+Return { spawn "foot"; }
+    Mod+Space { spawn "fuzzel"; }
+
+    // This enables the overview. 
+    // No extra "overview {}" config block is needed.
+    Mod+Tab { toggle-overview; }
+
+    Mod+B { spawn "firefox"; }
+
+    Mod+W { close-window; }
+    Mod+M { quit; }
+
+    Super+Shift+S { spawn-sh "out=/tmp/shot-$(date +%s).png; grim -g \"$(slurp)\" \"$out\" && satty --filename \"$out\" --actions-on-enter save-to-clipboard,exit"; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    
+    Mod+R { switch-preset-column-width; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-column; }
+    
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "+10%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%-"; }
+}

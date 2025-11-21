@@ -1,0 +1,59 @@
+# ----------------------------
+# Nix / NixOS / Flake-related
+# ----------------------------
+result
+result-*
+.nix-result
+.nix-gc-output
+.cache/
+.nix-previous
+
+# Nix build artifacts
+*.drv
+*.lock
+*.log
+
+# ----------------------------
+# Home Manager / User configs
+# ----------------------------
+
+.hm-build/
+home-manager-build/
+
+.cache/
+.local/
+tmp/
+logs/
+
+ssh/
+.ssh/
+gnupg/
+.gnupg/
+pki/
+keys/
+certs/
+secrets/
+secret/
+*.pem
+*.key
+*.crt
+
+.env
+.env.*
+*.env
+
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+bash_history
+.zsh_history
+.fish_history
+nu_history
+.history
+
+hardware-configuration.nix
+
