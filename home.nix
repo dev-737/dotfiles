@@ -43,10 +43,10 @@ in
     '';
   };
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscode.fhs;
+  # };
 
   programs.nushell = { 
       enable = true;
@@ -187,15 +187,13 @@ in
     gcc
     nitch
     nemo
-    vesktop
+    # vesktop
     brightnessctl
     gh
     neovim
     xwayland-satellite
-    uv
     p7zip
     unrar
-    atlas-standard
   ];
 
 
