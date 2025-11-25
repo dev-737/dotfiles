@@ -35,9 +35,6 @@ in
 	    firefox = "firefox-nightly";
     };
     profileExtra = ''
-      # if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-      #   exec hyprland;
-      # fi
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
         exec niri-session -l;
       fi
