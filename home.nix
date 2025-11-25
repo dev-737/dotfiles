@@ -32,6 +32,7 @@ in
     enable = true;
     shellAliases = {
 	    n = "nvim";
+	    firefox = "firefox-nightly";
     };
     profileExtra = ''
       # if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
@@ -42,11 +43,6 @@ in
       fi
     '';
   };
-
-  # programs.vscode = {
-  #   enable = true;
-  #   package = pkgs.vscode.fhs;
-  # };
 
   programs.nushell = { 
       enable = true;
@@ -82,6 +78,7 @@ in
     shellAliases = {
       n = "nvim";
       cls = "clear";
+	    firefox = "firefox-nightly";
     };
   };  
 
@@ -175,6 +172,26 @@ in
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      niri = {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      };
+    };
+  };
+
+
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscode.fhs;
+  # };
 
   home.packages = with pkgs; [
     grim
@@ -194,11 +211,12 @@ in
     xwayland-satellite
     p7zip
     unrar
+    firefox-nightly-bin
+    antigravity-fhs
+    atlas-standard
   ];
 
 
-  # home.file.".config/waybar".source = ./config/waybar;
-  # home.file.".config/hypr".source = ./config/hypr;
   home.file.".config/niri".source = ./config/niri;
   home.file.".config/electron-flags.conf".source = ./config/electron-flags.conf;
   home.file.".config/code-flags.conf".source = ./config/code-flags.conf;
