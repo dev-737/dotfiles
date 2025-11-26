@@ -10,7 +10,6 @@ result-*
 
 # Nix build artifacts
 *.drv
-*.lock
 *.log
 
 # ----------------------------

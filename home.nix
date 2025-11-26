@@ -43,7 +43,7 @@ in
 
   programs.nushell = { 
       enable = true;
-      configFile.source = ./config/nushell/config.nu;
+      # configFile.source = ./config/nushell/config.nu;
 
       extraConfig = ''
        let carapace_completer = {|spans|
