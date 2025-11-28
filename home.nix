@@ -26,7 +26,7 @@ in
 {
   home.username = "devoid";
   home.homeDirectory = "/home/devoid";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   programs.bash = {
     enable = true;
@@ -79,14 +79,6 @@ in
     };
   };  
 
-# if (
-#      ( ($env.WAYLAND_DISPLAY? | default "") == "" )
-#      and
-#      ($env.XDG_VTNR? | default "") == "1"
-#     ) {
-#       exec niri-session
-#     }
-  
   programs.carapace = {
      enable = true;
      enableNushellIntegration = true;
@@ -200,7 +192,6 @@ in
     nixpkgs-fmt
     gcc
     nitch
-    nemo
     # vesktop
     brightnessctl
     gh
@@ -209,8 +200,9 @@ in
     p7zip
     unrar
     firefox-nightly-bin
-    antigravity-fhs
-    atlas-standard
+    unzip
+    # antigravity-fhs
+    # chromium
   ];
 
 

@@ -164,7 +164,6 @@ security.pam.services.login.enableGnomeKeyring = true; # so your login unlocks t
     foot
     kitty
     curl
-    waybar
     git
     gvfs
     udisks2
