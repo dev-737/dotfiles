@@ -64,6 +64,18 @@ in
             completer: $carapace_completer
           }
         }
+        hooks: {
+          pre_prompt: [{ ||
+            if (which direnv | is-empty) {
+              return
+            }
+
+            direnv export json | from json | default {} | load-env
+            if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
+              $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
+            }
+          }]
+        }
        } 
 
        $env.PATH = ($env.PATH | 
@@ -161,6 +173,12 @@ in
     };
   };
 
+  programs.direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+  };
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -192,7 +210,7 @@ in
     nixpkgs-fmt
     gcc
     nitch
-    # vesktop
+    vesktop
     brightnessctl
     gh
     neovim
@@ -201,8 +219,11 @@ in
     unrar
     firefox-nightly-bin
     unzip
-    # antigravity-fhs
-    # chromium
+    pgcli
+    antigravity-fhs
+    chromium
+    vscode-fhs
+    termius
   ];
 
 
