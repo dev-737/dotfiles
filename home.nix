@@ -115,42 +115,42 @@ in
         shell = "${pkgs.nushell}/bin/nu";
       };
       
-      colors = {
-        background = "282828";
-        foreground = "ebdbb2";
-
-        ## Normal/Regular Colors (0-7)
-        regular0 = "282828";  # bg
-        regular1 = "cc241d";  # red
-        regular2 = "98971a";  # green
-        regular3 = "d79921";  # yellow
-        regular4 = "458588";  # blue
-        regular5 = "b16286";  # purple
-        regular6 = "689d6a";  # aqua
-        regular7 = "a89984";  # gray
-
-        ## Bright/Bold Colors (8-15)
-        bright0 = "928374";   # gray
-        bright1 = "fb4934";   # red
-        bright2 = "b8bb26";   # green
-        bright3 = "fabd2f";   # yellow
-        bright4 = "83a598";   # blue
-        bright5 = "d3869b";   # purple
-        bright6 = "8ec07c";   # aqua
-        bright7 = "ebdbb2";   # fg
-
-        ## Selection colors
-        selection-background = "504945";
-        selection-foreground = "ebdbb2";
-
-        ## Extra Gruvbox colors (Orange)
-        ## Numeric keys must be quoted in Nix
-        "16" = "d65d0e";
-        "17" = "fe8019";
-
-        ## Misc
-        urls = "83a598";
-      };
+      # colors = {
+      #   background = "282828";
+      #   foreground = "ebdbb2";
+      #
+      #   ## Normal/Regular Colors (0-7)
+      #   regular0 = "282828";  # bg
+      #   regular1 = "cc241d";  # red
+      #   regular2 = "98971a";  # green
+      #   regular3 = "d79921";  # yellow
+      #   regular4 = "458588";  # blue
+      #   regular5 = "b16286";  # purple
+      #   regular6 = "689d6a";  # aqua
+      #   regular7 = "a89984";  # gray
+      #
+      #   ## Bright/Bold Colors (8-15)
+      #   bright0 = "928374";   # gray
+      #   bright1 = "fb4934";   # red
+      #   bright2 = "b8bb26";   # green
+      #   bright3 = "fabd2f";   # yellow
+      #   bright4 = "83a598";   # blue
+      #   bright5 = "d3869b";   # purple
+      #   bright6 = "8ec07c";   # aqua
+      #   bright7 = "ebdbb2";   # fg
+      #
+      #   ## Selection colors
+      #   selection-background = "504945";
+      #   selection-foreground = "ebdbb2";
+      #
+      #   ## Extra Gruvbox colors (Orange)
+      #   ## Numeric keys must be quoted in Nix
+      #   "16" = "d65d0e";
+      #   "17" = "fe8019";
+      #
+      #   ## Misc
+      #   urls = "83a598";
+      # };
     };
   };
 
@@ -224,6 +224,9 @@ in
     chromium
     vscode-fhs
     termius
+    obsidian
+    nemo
+    cmake
   ];
 
 
