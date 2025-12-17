@@ -227,6 +227,7 @@ in
     obsidian
     nemo
     cmake
+    qbittorrent
   ];
 
 
