@@ -193,13 +193,7 @@ in
       };
     };
   };
-
-
-  # programs.vscode = {
-  #   enable = true;
-  #   package = pkgs.vscode.fhs;
-  # };
-
+  
   home.packages = with pkgs; [
     grim
     slurp
@@ -210,9 +204,9 @@ in
     nixpkgs-fmt
     gcc
     nitch
-    vesktop
+    # vesktop
     brightnessctl
-    gh
+    # gh
     neovim
     xwayland-satellite
     p7zip
@@ -228,6 +222,9 @@ in
     nemo
     cmake
     qbittorrent
+    steam-run
+    dotnet-sdk_8
+    steam
   ];
 
 
