@@ -55,7 +55,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return { spawn "foot"; }
-    Mod+Space { spawn "fuzzel"; }
+    // Mod+Space { spawn "fuzzel"; }
+    Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
     // This enables the overview. 
     // No extra "overview {}" config block is needed.

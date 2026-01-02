@@ -4,7 +4,7 @@ let
   system = "x86_64-linux";
   atlas-standard = pkgs.stdenv.mkDerivation rec {
     pname = "atlas-standard";
-    version = "v0.38.1-d98fb08-canary";
+    version = "v1.0.0";
 
     src = pkgs.fetchurl {
       url = "https://release.ariga.io/atlas/atlas-linux-amd64-${version}";
@@ -202,11 +202,12 @@ in
     ripgrep
     nil
     nixpkgs-fmt
+    pcmanfm
     gcc
-    nitch
+    # nitch
     # vesktop
     brightnessctl
-    # gh
+    gh
     neovim
     xwayland-satellite
     p7zip
@@ -214,17 +215,17 @@ in
     firefox-nightly-bin
     unzip
     pgcli
-    antigravity-fhs
-    chromium
-    vscode-fhs
+    # antigravity-fhs
+    # chromium
+    # vscode-fhs
     termius
     obsidian
-    nemo
+    # nemo
     cmake
     qbittorrent
-    steam-run
-    dotnet-sdk_8
-    steam
+    # steam-run
+    # dotnet-sdk_8
+    # steam
   ];
 
 
