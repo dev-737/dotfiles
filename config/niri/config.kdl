@@ -8,6 +8,7 @@ input {
     keyboard {
         xkb {
             layout "us"
+            options "caps:swapescape"
         }
     }
     touchpad {
@@ -17,6 +18,22 @@ input {
     focus-follows-mouse
 }
 
+// Internal Laptop Display (Left)
+output "eDP-1" {
+    mode "1920x1200"
+    scale 1.25
+    transform "normal"
+    position x=0 y=0
+}
+
+// External Dell Monitor (Right)
+output "HDMI-A-1" {
+    mode "1920x1200"
+    scale 1.0
+    transform "normal"
+    // Position starts where the internal display ends (1920 / 1.25 = 1536)
+    position x=1536 y=0
+}
 layout {
     gaps 16
     center-focused-column "never"

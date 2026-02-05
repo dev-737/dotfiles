@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, zen-browser, ... }:
 
 let
   system = "x86_64-linux";
@@ -26,7 +26,7 @@ in
 {
   home.username = "devoid";
   home.homeDirectory = "/home/devoid";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   programs.bash = {
     enable = true;
@@ -193,7 +193,19 @@ in
       };
     };
   };
-  
+
+
+  programs.gpg = {
+    enable = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
+
   home.packages = with pkgs; [
     grim
     slurp
@@ -202,32 +214,43 @@ in
     ripgrep
     nil
     nixpkgs-fmt
-    pcmanfm
     gcc
-    # nitch
-    # vesktop
     brightnessctl
-    gh
-    neovim
     xwayland-satellite
     p7zip
     unrar
-    firefox-nightly-bin
     unzip
     pgcli
-    # antigravity-fhs
-    # chromium
-    # vscode-fhs
-    termius
     obsidian
-    # nemo
-    cmake
+    vim
+    firefox-nightly-bin
+    aseprite
+    steam-run
+    dotnet-sdk_8
+    vscode-fhs
+    chromium
+    gpu-screen-recorder
+    suwayomi-server
+    nautilus
+    gnupg
+    pinentry-curses
+    gh
+    antigravity-fhs
+    vesktop
+    termius
+    neovim
     qbittorrent
-    # steam-run
-    # dotnet-sdk_8
-    # steam
+    steam-run
+    dotnet-sdk_8
+    steam
+    nitch
+    cmake
+    (zen-browser.packages."${system}".default.override {
+      extraPolicies = {
+        DisableTelemetry = true;
+      };
+    })
   ];
-
 
   home.file.".config/niri".source = ./config/niri;
   home.file.".config/electron-flags.conf".source = ./config/electron-flags.conf;

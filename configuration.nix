@@ -20,6 +20,11 @@
 
   hardware.uinput.enable = true;
   hardware.bluetooth.enable = true;
+  # Enable OpenGL/Graphics
+  hardware.graphics.enable = true; 
+
+  # REQUIRED for Steam: Enable 32-bit drivers
+  hardware.graphics.enable32Bit = true;
 
     # Set up udev rules for uinput
   services.udev.extraRules = ''
@@ -56,7 +61,7 @@
   services.getty.autologinUser = "devoid";
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-  services.devmon.enable = true; # devmon handles automounting via udisks2
+  # services.devmon.enable = true; # devmon handles automounting via udisks2
   services.blueman.enable = true;
   services.gnome.gnome-keyring.enable = true; # enable the GNOME keyring service
   services.power-profiles-daemon.enable = true;
@@ -100,7 +105,7 @@
   };
 
 
-security.pam.services.login.enableGnomeKeyring = true; # so your login unlocks the keyring
+  security.pam.services.login.enableGnomeKeyring = true; # so your login unlocks the keyring
   security.polkit.enable = true;
 
   
