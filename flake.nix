@@ -12,10 +12,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-nightly = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # firefox-nightly = {
+    #   url = "github:nix-community/flake-firefox-nightly";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -24,14 +24,14 @@
       };
     };
   };
-  outputs = { nixpkgs, home-manager, noctalia, firefox-nightly, zen-browser, ... }: {
+  outputs = { nixpkgs, home-manager, noctalia, zen-browser, ... }: { # firefox-nightly
     nixosConfigurations.hyprland-btw = nixpkgs.lib.nixosSystem {
       modules = [
         ./configuration.nix
 
-        {
-          nixpkgs.overlays = [ firefox-nightly.overlays.default ];
-        }
+        # {
+        #   nixpkgs.overlays = [ firefox-nightly.overlays.default ];
+        # }
 
         home-manager.nixosModules.home-manager
         {
@@ -39,7 +39,8 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users.devoid = import ./home.nix;
-            extraSpecialArgs = { inherit firefox-nightly zen-browser; }; 
+            extraSpecialArgs = { inherit zen-browser; }; 
+            # extraSpecialArgs = { inherit firefox-nightly zen-browser; }; 
             backupFileExtension = "backup";
           };
         }

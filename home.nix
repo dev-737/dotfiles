@@ -201,7 +201,8 @@ in
 
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-qt;
+    pinentry.package = pkgs.pinentry-qt;
+
     defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
@@ -223,20 +224,16 @@ in
     pgcli
     obsidian
     vim
-    firefox-nightly-bin
     aseprite
     steam-run
     dotnet-sdk_8
     vscode-fhs
     chromium
     gpu-screen-recorder
-    suwayomi-server
     nautilus
     gnupg
     pinentry-qt
     gh
-    antigravity-fhs
-    vesktop
     termius
     neovim
     qbittorrent
@@ -245,6 +242,7 @@ in
     steam
     nitch
     cmake
+    jellyfin-desktop
     (zen-browser.packages."${system}".default.override {
       extraPolicies = {
         DisableTelemetry = true;
