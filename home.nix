@@ -201,7 +201,7 @@ in
 
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-qt;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
@@ -233,7 +233,7 @@ in
     suwayomi-server
     nautilus
     gnupg
-    pinentry-curses
+    pinentry-qt
     gh
     antigravity-fhs
     vesktop
