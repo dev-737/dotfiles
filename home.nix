@@ -207,6 +207,25 @@ in
     enableSshSupport = true;
   };
 
+  programs.vscode = {
+    enable = true;
+
+    package = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
+        src = builtins.fetchTarball {
+          url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+          sha256 = "0blw5q9gd0v5k9m8zh1144s5srw626zihscrkh787wbadcw4pz3a";
+        };
+        version = "latest";
+        
+        # Keep these dependencies for the base package
+        buildInputs = oldAttrs.buildInputs ++ [
+          pkgs.krb5
+          pkgs.libsoup_3
+          pkgs.webkitgtk_4_1
+        ];
+      });
+  };
+
   home.packages = with pkgs; [
     grim
     slurp
@@ -227,8 +246,6 @@ in
     aseprite
     steam-run
     dotnet-sdk_8
-    vscode-fhs
-    chromium
     gpu-screen-recorder
     nautilus
     gnupg

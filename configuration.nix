@@ -35,12 +35,12 @@
   users.groups.uinput = { };
 
   # Add the Kanata service user to necessary groups
-  systemd.services.kanata-internalKeyboard.serviceConfig = {
-    SupplementaryGroups = [
-      "input"
-      "uinput"
-    ];
-  };
+  # systemd.services.kanata-internalKeyboard.serviceConfig = {
+  #   SupplementaryGroups = [
+  #     "input"
+  #     "uinput"
+  #   ];
+  # };
 
   systemd.user.services.mpris-proxy = {
     description = "MPRIS proxy";
@@ -70,39 +70,40 @@
   services.noctalia-shell.enable = true;
 
 
-  services.kanata = {
-    enable = true;
-    keyboards = {
-    internalKeyboard = {
-      devices = [
-        "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-        "/dev/input/by-path/pci-0000:04:00.4-usb-0:1:1.0-event-kbd"
-      ];
-
-      extraDefCfg = "process-unmapped-keys yes";
-      config = ''
-        (defsrc
-          caps esc   ;; 1. Listen for CapsLock and Escape
-        )
-
-        (defvar
-          tap-time 200
-          hold-time 200
-        )
-
-        (defalias
-          ;; Your existing "Magic Caps": Tap = Esc, Hold = Ctrl
-          mycaps (tap-hold 200 200 esc lctl)
-        )
-
-        (deflayer base
-          @mycaps    ;; 2. Physical CapsLock becomes Esc/Ctrl
-          caps       ;; 3. Physical Escape becomes CapsLock
-        )
-      '';
-      };
-    };
-  };
+  # services.kanata = {
+  #   enable = true;
+  #   keyboards = {
+  #   internalKeyboard = {
+  #     devices = [
+  #       "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+  #       "/dev/input/by-path/pci-0000:04:00.4-usb-0:1:1.0-event-kbd"
+  #       "/dev/input/by-path/pci-0000:04:00.4-usbv2-0:2:1.0-event-kbd"
+  #     ];
+  #
+  #     extraDefCfg = "process-unmapped-keys yes";
+  #     config = ''
+  #       (defsrc
+  #         caps esc   ;; 1. Listen for CapsLock and Escape
+  #       )
+  #
+  #       (defvar
+  #         tap-time 200
+  #         hold-time 200
+  #       )
+  #
+  #       (defalias
+  #         ;; Your existing "Magic Caps": Tap = Esc, Hold = Ctrl
+  #         mycaps (tap-hold 200 200 esc lctl)
+  #       )
+  #
+  #       (deflayer base
+  #         @mycaps    ;; 2. Physical CapsLock becomes Esc/Ctrl
+  #         caps       ;; 3. Physical Escape becomes CapsLock
+  #       )
+  #     '';
+  #     };
+  #   };
+  # };
 
 
   security.pam.services.login.enableGnomeKeyring = true; # so your login unlocks the keyring
