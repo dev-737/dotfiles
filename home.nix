@@ -208,7 +208,7 @@ in
   };
 
   programs.vscode = {
-    enable = true;
+    enable = false;
 
     package = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
         src = builtins.fetchTarball {
@@ -240,31 +240,28 @@ in
     p7zip
     unrar
     unzip
-    pgcli
+    # pgcli
     obsidian
     vim
-    aseprite
-    steam-run
-    dotnet-sdk_8
+    # aseprite
     gpu-screen-recorder
     nautilus
-    gnupg
-    pinentry-qt
-    gh
-    termius
+    # gnupg
+    # pinentry-qt
+    # gh
+    # termius
     neovim
-    qbittorrent
-    steam-run
-    dotnet-sdk_8
-    steam
-    nitch
+    # qbittorrent
+    # steam-run
+    # dotnet-sdk_8
+    # steam
     cmake
-    jellyfin-desktop
-    (zen-browser.packages."${system}".default.override {
-      extraPolicies = {
-        DisableTelemetry = true;
-      };
-    })
+    google-chrome
+    # (zen-browser.packages."${system}".default.override {
+    #   extraPolicies = {
+    #     DisableTelemetry = true;
+    #   };
+    # })
   ];
 
   home.file.".config/niri".source = ./config/niri;
