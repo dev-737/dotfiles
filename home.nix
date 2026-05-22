@@ -240,28 +240,23 @@ in
     p7zip
     unrar
     unzip
-    # pgcli
     obsidian
     vim
-    # aseprite
     gpu-screen-recorder
     nautilus
-    # gnupg
-    # pinentry-qt
-    # gh
-    # termius
     neovim
-    # qbittorrent
-    # steam-run
-    # dotnet-sdk_8
-    # steam
-    cmake
-    google-chrome
-    # (zen-browser.packages."${system}".default.override {
-    #   extraPolicies = {
-    #     DisableTelemetry = true;
-    #   };
-    # })
+    # google-chrome
+    proton-vpn
+    ollama
+    termius
+    beekeeper-studio
+    # nodejs_25
+    (noctalia-shell.override { calendarSupport = true; })
+    (zen-browser.packages."${system}".default.override {
+      extraPolicies = {
+        DisableTelemetry = true;
+      };
+    })
   ];
 
   home.file.".config/niri".source = ./config/niri;

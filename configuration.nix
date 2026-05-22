@@ -17,7 +17,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "uinput" ];
-
+  
   hardware.uinput.enable = true;
   hardware.bluetooth.enable = true;
   # Enable OpenGL/Graphics
@@ -64,10 +64,9 @@
   # services.devmon.enable = true; # devmon handles automounting via udisks2
   services.blueman.enable = true;
   services.gnome.gnome-keyring.enable = true; # enable the GNOME keyring service
+  services.gnome.evolution-data-server.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
-
-  services.noctalia-shell.enable = true;
 
 
   # services.kanata = {
@@ -143,8 +142,10 @@
   # services.pulseaudio.enable = true;
   # OR
   services.pipewire = {
-    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -174,6 +175,7 @@
     gvfs
     udisks2
   ];
+
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -243,5 +245,5 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
   nixpkgs.config.allowUnfree = true;
-}
 
+}

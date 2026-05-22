@@ -1,5 +1,5 @@
 {
-  description = "Hyperland on Nixos";
+  description = "Niri on Nixos";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -24,10 +24,13 @@
       };
     };
   };
-  outputs = { nixpkgs, home-manager, noctalia, zen-browser, ... }: { # firefox-nightly
+
+  outputs = inputs@{ nixpkgs, home-manager, noctalia, zen-browser, ... }: { # firefox-nightly
     nixosConfigurations.hyprland-btw = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
+        ./noctalia.nix
 
         # {
         #   nixpkgs.overlays = [ firefox-nightly.overlays.default ];
@@ -44,8 +47,13 @@
             backupFileExtension = "backup";
           };
         }
-        noctalia.nixosModules.default
+        # noctalia.nixosModules.default
       ];
     };
+  };
+
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
   };
 }
