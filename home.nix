@@ -34,6 +34,9 @@ in
 	    n = "nvim";
 	    firefox = "firefox-nightly";
     };
+    initExtra = ''
+      export PATH="$HOME/.local/bin:$PATH"
+    '';
     profileExtra = ''
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
         exec niri-session -l;
@@ -80,6 +83,7 @@ in
 
        $env.PATH = ($env.PATH | 
           split row (char esep) |
+          prepend /home/devoid/.local/bin |
           prepend /home/myuser/.apps |
           append /usr/bin/env
        )
@@ -88,8 +92,9 @@ in
       n = "nvim";
       cls = "clear";
 	    firefox = "firefox-nightly";
+      kubectl = "kubecolor";
     };
-  };  
+  };
 
   programs.carapace = {
      enable = true;
@@ -234,7 +239,6 @@ in
     ripgrep
     nil
     nixpkgs-fmt
-    gcc
     brightnessctl
     xwayland-satellite
     p7zip
@@ -245,11 +249,34 @@ in
     gpu-screen-recorder
     nautilus
     neovim
-    # google-chrome
+    google-chrome
     proton-vpn
     ollama
     termius
     beekeeper-studio
+    elixir
+    gh
+    vscode-fhs
+    antigravity-fhs
+    rustc
+    cargo
+    rust-analyzer
+    clippy
+    rustfmt
+    pkg-config
+    erlang_28
+    minikube
+    vesktop
+    bun
+    libcap
+    btop
+    xpipe
+    go
+    kitty
+    socat
+    gcc16
+    kubectl
+    kubecolor
     # nodejs_25
     (noctalia-shell.override { calendarSupport = true; })
     (zen-browser.packages."${system}".default.override {

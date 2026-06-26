@@ -16,7 +16,7 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "uinput" ];
+  boot.kernelModules = [ "uinput" "btmtk" "btusb" ];
   
   hardware.uinput.enable = true;
   hardware.bluetooth.enable = true;
@@ -142,6 +142,7 @@
   # services.pulseaudio.enable = true;
   # OR
   services.pipewire = {
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -245,5 +246,6 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
   nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
 
 }
