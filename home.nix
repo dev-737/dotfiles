@@ -254,7 +254,8 @@ in
     ollama
     termius
     beekeeper-studio
-    elixir
+    beamPackages.elixir
+    beam28Packages.erlang
     gh
     vscode-fhs
     antigravity-fhs
@@ -264,7 +265,6 @@ in
     clippy
     rustfmt
     pkg-config
-    erlang_28
     minikube
     vesktop
     bun
@@ -277,6 +277,7 @@ in
     gcc16
     kubectl
     kubecolor
+    anytype
     # nodejs_25
     (noctalia-shell.override { calendarSupport = true; })
     (zen-browser.packages."${system}".default.override {
