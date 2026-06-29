@@ -203,6 +203,34 @@
 
   nix.settings.auto-optimise-store = true;
 
+  sops.defaultSopsFile = ./secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
+
+  sops.secrets.wireguard_private_key = {};
+  sops.secrets.wireguard_preshared_key = {};
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [ "10.8.0.3/24" ]; 
+      dns = [ "10.10.10.10" "9.9.9.9" ]; 
+      
+      privateKeyFile = config.sops.secrets.wireguard_private_key.path;
+
+      peers = [
+        {
+          publicKey = "EizR82wXwnD+UJ8GFnh1ZxvXbcO55Jx3ngabmKb1aGg=";
+	  presharedKeyFile = config.sops.secrets.wireguard_preshared_key.path;
+          allowedIPs = [ "10.0.0.0/8" ];
+          endpoint = "141.94.102.179:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
+  systemd.services."wg-quick-wg0".wantedBy = lib.mkForce [];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

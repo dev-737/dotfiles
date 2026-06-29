@@ -12,10 +12,7 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # firefox-nightly = {
-    #   url = "github:nix-community/flake-firefox-nightly";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    sops-nix.url = "github:Mic92/sops-nix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -25,18 +22,17 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, noctalia, zen-browser, ... }: { # firefox-nightly
+  outputs = inputs@{ nixpkgs, home-manager, noctalia, zen-browser, sops-nix, ... }: { # firefox-nightly
     nixosConfigurations.hyprland-btw = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
         ./noctalia.nix
-
+	sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager
         # {
         #   nixpkgs.overlays = [ firefox-nightly.overlays.default ];
         # }
-
-        home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;

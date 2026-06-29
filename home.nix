@@ -31,8 +31,8 @@ in
   programs.bash = {
     enable = true;
     shellAliases = {
-	    n = "nvim";
-	    firefox = "firefox-nightly";
+        n = "nvim";
+        firefox = "firefox-nightly";
     };
     initExtra = ''
       export PATH="$HOME/.local/bin:$PATH"
@@ -44,71 +44,36 @@ in
     '';
   };
 
-  programs.nushell = { 
-      enable = true;
-      # configFile.source = ./config/nushell/config.nu;
-
-      extraConfig = ''
-       let carapace_completer = {|spans|
-         carapace $spans.0 nushell ...$spans | from json
-       }
-
-       $env.config = {
-        show_banner: false,
-
-        completions: {
-          case_sensitive: false
-          quick: true
-          partial: true
-          algorithm: "fuzzy"
-          external: {
-            enable: true 
-            max_results: 100 
-            completer: $carapace_completer
-          }
-        }
-        hooks: {
-          pre_prompt: [{ ||
-            if (which direnv | is-empty) {
-              return
-            }
-
-            direnv export json | from json | default {} | load-env
-            if 'ENV_CONVERSIONS' in $env and 'PATH' in $env.ENV_CONVERSIONS {
-              $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
-            }
-          }]
-        }
-       } 
-
-       $env.PATH = ($env.PATH | 
-          split row (char esep) |
-          prepend /home/devoid/.local/bin |
-          prepend /home/myuser/.apps |
-          append /usr/bin/env
-       )
-       '';
+  programs.fish = {
+    enable = true;
     shellAliases = {
       n = "nvim";
       cls = "clear";
-	    firefox = "firefox-nightly";
+      firefox = "firefox-nightly";
       kubectl = "kubecolor";
     };
+    interactiveShellInit = ''
+      set -g fish_greeting
+      fish_add_path /home/devoid/.local/bin
+      fish_add_path /home/myuser/.apps
+    '';
+    loginShellInit = ''
+      # Wayland auto-start logic for login shells
+      if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
+        exec niri-session -l
+      end
+    '';
   };
 
   programs.carapace = {
      enable = true;
-     enableNushellIntegration = true;
+     enableFishIntegration = true;
   };
 
   programs.starship = {
     enable = true;
     settings = {
          add_newline = true;
-         character = { 
-         success_symbol = "[➜](bold green)";
-         error_symbol = "[➜](bold red)";
-       };
     };
   };
 
@@ -117,7 +82,7 @@ in
     settings = {
       main = {
         font = "JetBrainsMono Nerd Font:size=11, Noto Color Emoji";
-        shell = "${pkgs.nushell}/bin/nu";
+        shell = "${pkgs.fish}/bin/fish";
       };
       
       # colors = {
@@ -180,7 +145,8 @@ in
 
   programs.direnv = {
       enable = true;
-      enableBashIntegration = true; # see note on other shells below
+      enableBashIntegration = true; 
+      enableFishIntegration = true;
       nix-direnv.enable = true;
   };
 
@@ -198,7 +164,6 @@ in
       };
     };
   };
-
 
   programs.gpg = {
     enable = true;
@@ -278,6 +243,7 @@ in
     kubectl
     kubecolor
     anytype
+    warp-terminal
     # nodejs_25
     (noctalia-shell.override { calendarSupport = true; })
     (zen-browser.packages."${system}".default.override {
